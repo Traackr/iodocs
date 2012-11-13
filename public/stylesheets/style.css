@@ -489,6 +489,31 @@ li {
   margin-top: 14px;
 }
 
+/* ExpectResponses */
+.method div.expect-responses h4 {
+  margin-top: 0;
+}
+
+.method div.expect-responses .fields {
+  display: none;
+  padding: 0 15px;
+  margin-bottom: 15px;
+}
+
+.method div.expect-responses .indicator {
+  border-width: 5px;
+  border-color: transparent transparent transparent #333;
+  border-style: solid;
+  display: block;
+  float: left;
+  margin: 11px 0 0 10px;
+}
+
+.method div.expect-responses.expanded .indicator {
+  border-color: #333 transparent transparent transparent;
+  margin-top: 14px;
+}
+
 .method:first-of-type {
   margin-top: 0;
 }

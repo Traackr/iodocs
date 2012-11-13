@@ -149,6 +149,19 @@
         $('div.fields', this.parentNode).slideToggle();
     });
 
+    // Toggle ExpectResponses section
+    $('div.expect-responses h4').click(function(event) {
+        event.preventDefault();
+
+        $(this.parentNode).toggleClass('expanded');
+
+        $('div.fields', this.parentNode).slideToggle();
+
+        if($('div.fields').is(":visible")) {
+            prettyPrint();
+        }
+    });
+    
     // Auth with OAuth
     $('#credentials').submit(function(event) {
         event.preventDefault();

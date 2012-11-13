@@ -152,5 +152,25 @@ ul
                                                         a(href='#', class='remove') Remove
                                         a(href='#', class='add-headers') Add Header
                                     // Create header fields and button to add/remove headers.
+                            - if (method.ExpectResponses && method.ExpectResponses.length > 0)
+                                div.expect-responses
+                                    h4.title
+                                        div.indicator
+                                        span Expect Responses
+                                    div.fields
+                                        table
+                                            thead
+                                                tr
+                                                    th Format
+                                                    th Schema
+                                            tbody
+                                                - var responseCount =0
+                                                - each response in method.ExpectResponses
+                                                    - responseCount++
+                                                    div(id='response' + responseCount)
+                                                        tr
+                                                            td.format=response.Format
+                                                            td.schema
+                                                                pre(class='prettyprint')!=JSON.stringify(response.Schema, null, 2)
                             - if (!method['read-only'])
                                 input(type='submit', id=method.MethodName, value='Try it!')

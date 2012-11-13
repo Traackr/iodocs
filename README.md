@@ -405,7 +405,41 @@ You should look at the *./public/data/* directory for examples.
                 "Type":"boolean",
                 "Description":"If true, status not included"
              }
+        ],
+        "ExpectResponses": [
+          {
+            "Format": "json",
+            "Schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "description": "User address",
+                  "required":true
+                },
+                "phone": {
+                  "type":"string",
+                  "description":"User phone",
+                  "required":true,
+                  "format": "phone"
+                },
+                "habbits": {
+                  "type":"array",
+                  "description":"User habbits",
+                  "required":false,
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "Format": "xml",
+            "Schema": {}
+          }
         ]
+      }
     }]
 }
 ```
@@ -447,6 +481,12 @@ Line:
 26. Each value in the list is a string.
 
 27. "Type" key value is *boolean* that will render a drop-down (select box) on the form for *true* and *false*.
+
+28. "ExpectResponses" key value is an array of JSON objects (each one being a response format). It's an optional.
+
+29. "Format" in "ExpectResponses" key value is a string to annotate the response format (Ex:josn, xml...etc)
+
+30. "Schema" in "ExpectResponses" key value is an object to describe the response schema. It's better to use public schema relative to the format (Ex:json-schema for json)
 
 SUPPORT
 =======
