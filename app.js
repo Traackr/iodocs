@@ -524,17 +524,15 @@ function processRequest(req, res, next) {
         if(options.headers === void 0){
             options.headers = {}
         }
-        if (!options.headers['Content-Length']) {
-            if (requestBody) {
-                options.headers['Content-Length'] = requestBody.length;
-            }
-            else {
-                options.headers['Content-Length'] = 0;
-            }
-        }
 
-        if (!options.headers['Content-Type'] && requestBody) {
+        // If POST, PUT, -or- DELETE
+        if (requestBody) {
+            options.headers['Content-Length'] = requestBody.length;
             options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+        }
+        else {
+            options.headers['Content-Length'] = 0;
+            delete options.headers['Content-Type'];
         }
 
         if (config.debug) {
