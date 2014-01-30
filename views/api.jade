@@ -39,6 +39,12 @@ form#credentials
                  div
                     input(name='oauth', value='Authenticate with OAuth', type='submit', id='oauth-auth')
 
+div(id='guidelines')
+  h2 High-level Guidelines
+  ul
+    - each guideline in apiDefinition.guidelines
+        li=guideline
+
 div(id='controls')
     ul
         li
@@ -59,7 +65,7 @@ ul
             - if (endpoint.methods.length)
             ul.methods.hidden
                 - each method in endpoint.methods
-                    - var httpmethod =method.HTTPMethod.toLowerCase()
+                    - var httpmethod = method.HTTPMethod.toLowerCase().replace('*','')
                     - if (method.RequiresOAuth ==='Y' || method.RequiresOAuth ===true)
                         - var secure ='authrequired'
                     - else
@@ -70,7 +76,7 @@ ul
                             span.name #{method.MethodName}
                             span.uri #{method.URI}
                         form.hidden
-                            input(type='hidden', name='httpMethod', value=method.HTTPMethod)
+                            input(type='hidden', name='httpMethod', value=httpmethod.toUpperCase())
                             input(type='hidden', name='oauth', value=secure)
                             input(type='hidden', name='methodUri', value=method.URI)
 
