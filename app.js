@@ -528,7 +528,7 @@ function processRequest(req, res, next) {
         // If POST, PUT, -or- DELETE
         if (requestBody) {
             options.headers['Content-Length'] = requestBody.length;
-            options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+            options.headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=utf-8';
         }
         else {
             options.headers['Content-Length'] = 0;
