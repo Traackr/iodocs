@@ -388,6 +388,11 @@ li {
   list-style-type: square;
 } 
 
+img.experimental {
+  margin: 0px 10px;
+  width: 25px;
+}
+
 #controls {
   overflow: hidden;
   *zoom: 1;

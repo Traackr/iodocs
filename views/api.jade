@@ -95,15 +95,19 @@ ul
                                         - var paramCount =0
                                         - each parameter in method.parameters
                                             - paramCount++
+                                            - var required =false
+                                            - var className =''
                                             div(id='param' + paramCount)
                                               - if (parameter.Required =='Y')
-                                                  - var required =true
-                                                  - var className ='required'
-                                              - else
-                                                  - var required =false
-                                                  - var className =''
+                                                  - required =true
+                                                  - className ='required'
                                               tr(class=className)
-                                                  td.name=parameter.Name
+                                                  - if (parameter.Experimental == 'Y')
+                                                      td
+                                                        span=parameter.Name
+                                                        img(src='images/experimental.png', title='Experimental', class='experimental')
+                                                  - else
+                                                      td.name=parameter.Name
                                                   td.parameter
                                                       - if (parameter.Type =='enumerated')
                                                           select(name='params[' + parameter.Name + ']', placeholder=className)
