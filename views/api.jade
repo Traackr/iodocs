@@ -39,11 +39,25 @@ form#credentials
                  div
                     input(name='oauth', value='Authenticate with OAuth', type='submit', id='oauth-auth')
 
-div(id='guidelines')
-  h2 High-level Guidelines
-  ul
-    - each guideline in apiDefinition.guidelines
-        li=guideline
+- function codeHighlight(text) {
+-   return text.replace(/`([^`]+)`/g, function(str, $1) {
+-     return '<code class="language-javascript">' + $1 + '</code>';
+-   });
+- }
+
+mixin guidelines(title, guidelines)
+  div.guidelines-container&attributes(attributes)
+    h2.guideline-title
+      span #{title + ' '}
+    ul.guidelines
+      - each guideline in apiDefinition[guidelines]
+        li !{codeHighlight(guideline)}
+
++guidelines('High-level Guidelines', 'highLevelGuidelines')(class="top down")
++guidelines('API Errors', 'apiErrors')
++guidelines('Formatting/Content Negotiation', 'formatting')
++guidelines('Keyword Guidelines', 'keywordGuidelines')
++guidelines('Keyword Restrictions/Limitations', 'keywordLimitations')
 
 div(id='controls')
     ul
