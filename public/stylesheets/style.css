@@ -380,10 +380,6 @@ h2.guideline-title span:after {
   content: "\25BE";
 }
 
-div.guidelines-container.down h2.guideline-title span:after {
-  content: "\25B4";
-}
-
 .guidelines-container h2.guideline-title span:hover {
   cursor: pointer;
   text-decoration: underline;
