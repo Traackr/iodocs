@@ -14,6 +14,11 @@
         }
     }
 
+    // Toggle expand/collapse of guidelines section
+    $('h2.guideline-title').click(function() {
+        $(this.parentNode).find('ul').slideToggle();
+    });
+
     // Toggle show/hide of method details, form, and results
     $('li.method > div.title').click(function() {
         $('form', this.parentNode).slideToggle();

@@ -364,9 +364,42 @@ li {
   margin-top: 20px;
 }
 
-#guidelines {
+ul.guidelines {
+  display: none;
+}
+
+div.guidelines-container.top ul.guidelines {
+  display: block;
+}
+
+h2.guideline-title {
+  margin-bottom: 0px;
+}
+
+h2.guideline-title span:after {
+  content: "\25BE";
+}
+
+.guidelines-container h2.guideline-title span:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.guidelines-container:nth-child(odd) {
   background-color: #e1f4f4;
   border: 1px solid #97d8d8;
+}
+
+.guidelines-container:nth-child(even) {
+  background-color: #eaffea;
+  border: 1px solid #a0e3ce;
+}
+
+:not(pre) > code[class*="language-"] {
+  padding: 0;
+}
+
+.guidelines-container {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -379,11 +412,11 @@ li {
   padding: 15px;
 }
 
-#guidelines ul {
+.guidelines-container ul {
   margin-left: 15px;
 }
 
-#guidelines li {
+.guidelines-container li {
   margin-top: 8px;
   list-style-type: square;
 } 
