@@ -541,12 +541,14 @@ function processRequest(req, res, next) {
 
         var doRequest;
         if (options.protocol === 'https' || options.protocol === 'https:') {
-            console.log('Protocol: HTTPS');
             options.protocol = 'https:'
             doRequest = https.request;
         } else {
-            console.log('Protocol: HTTP');
             doRequest = http.request;
+        }
+
+        if (config.debug) {
+          console.log('Protocol: ' + options.protocol);
         }
 
         // API Call. response is the response from the API, res is the response we will send back to the user.
@@ -574,8 +576,9 @@ function processRequest(req, res, next) {
                 switch (true) {
                     case /application\/javascript/.test(responseContentType):
                     case /application\/json/.test(responseContentType):
-                        console.log(util.inspect(body));
-                        // body = JSON.parse(body);
+                        if (config.debug) {
+                          console.log(util.inspect(body));
+                        }
                         break;
                     case /application\/xml/.test(responseContentType):
                     case /text\/xml/.test(responseContentType):
@@ -590,7 +593,9 @@ function processRequest(req, res, next) {
                 // Response body
                 req.result = body;
 
-                console.log(util.inspect(body));
+                if (config.debug) {
+                  console.log(util.inspect(body));
+                }
 
                 next();
             })
