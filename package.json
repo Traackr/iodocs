@@ -21,10 +21,8 @@
     "url": "git://github.com/mashery/iodocs.git"
   },
   "dependencies": {
-    "connect-redis": "1.0.6",
     "express": "2.5.8",
     "jade": "^1.11.0",
-    "oauth": "0.9.3",
     "querystring": "0.1.0",
     "redis": ">= 0.7.0"
   },
